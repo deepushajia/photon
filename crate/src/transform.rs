@@ -9,6 +9,7 @@ use image::RgbaImage;
 use image::{GenericImageView, ImageBuffer};
 use std::cmp::max;
 use std::cmp::min;
+use image::Rgba as RGBA;
 
 #[cfg(feature = "enable_wasm")]
 use wasm_bindgen::prelude::*;
@@ -338,6 +339,67 @@ pub fn seam_carve(img: &PhotonImage, width: u32, height: u32) -> PhotonImage {
         height,
     }
 }
+
+
+#[cfg_attr(feature = "enable_wasm", wasm_bindgen)]
+pub fn grayscale_and_crop(img: &mut PhotonImage) -> PhotonImage {
+    let raw_pixels =  img.get_raw_pixels();
+    let end = raw_pixels.len();
+    let width = img.get_width();
+    let height = img.get_height();
+    let mut min_x = width - 1;
+    let mut min_y = height - 1;
+    let mut max_x = 0;
+    let mut max_y = 0;
+    
+    for i in (0..end).step_by(4) {
+        let r_val = img.raw_pixels[i] as u32;
+        let g_val = img.raw_pixels[i + 1] as u32;
+        let b_val = img.raw_pixels[i + 2] as u32;
+        let mut avg: u32 = (r_val + g_val + b_val) / 3;
+        if avg >= 255 {
+            avg = 255
+        }
+        let x: u32 = (i%((width*4) as usize)) as u32;
+        let y: u32 = (i/((width*4) as usize)) as u32;
+        
+        img.raw_pixels[i] = avg as u8;
+        img.raw_pixels[i + 1] = avg as u8;
+        img.raw_pixels[i + 2] = avg as u8;
+
+        if img.raw_pixels[i + 3] != 0 { // Check if the alpha channel is not transparent
+            min_x = min_x.min(x);
+            min_y = min_y.min(y);
+            max_x = max_x.max(x);
+            max_y = max_y.max(y);
+        }
+    }
+
+    let mut cropped_img: RgbaImage = ImageBuffer::new(max_x - min_x, max_y - min_y);
+
+    for (x, y) in ImageIterator::with_dimension(&cropped_img.dimensions()) {
+        let pixel = ((min_x+x)*width + min_y + y)*4;
+        let px0 = raw_pixels[pixel as usize];
+        let px1 = raw_pixels[pixel as usize + 1];
+        let px2 = raw_pixels[pixel as usize + 2];
+        let px3 = raw_pixels[pixel as usize + 3];
+        cropped_img.put_pixel(x, y, RGBA([px0, px1, px2, px3]));
+    }
+    let dynimage = ImageRgba8(cropped_img);
+
+    let width = dynimage.width();
+    let height = dynimage.height();
+
+    let raw_pixels = dynimage.into_bytes();
+    let new_photon_image = PhotonImage {
+        raw_pixels,
+        width,
+        height,
+    };
+    new_photon_image
+
+}
+
 
 /// Apply uniform padding around the PhotonImage
 /// A padded PhotonImage is returned.

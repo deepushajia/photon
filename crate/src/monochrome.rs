@@ -4,7 +4,10 @@ use crate::helpers;
 use crate::iter::ImageIterator;
 use crate::PhotonImage;
 use image::Pixel;
-use image::{GenericImage, GenericImageView};
+use image::{GenericImage, GenericImageView, ImageBuffer};
+use image::DynamicImage::ImageRgba8;
+use image::RgbaImage;
+use image::Rgba;
 
 #[cfg(feature = "enable_wasm")]
 use wasm_bindgen::prelude::*;
@@ -122,6 +125,7 @@ pub fn sepia(img: &mut PhotonImage) {
 /// let mut img = open_image("img.jpg").expect("File should open");
 /// grayscale(&mut img);
 /// ```
+
 #[cfg_attr(feature = "enable_wasm", wasm_bindgen)]
 pub fn grayscale(img: &mut PhotonImage) {
     let end = img.get_raw_pixels().len();
@@ -138,6 +142,23 @@ pub fn grayscale(img: &mut PhotonImage) {
         img.raw_pixels[i] = avg as u8;
         img.raw_pixels[i + 1] = avg as u8;
         img.raw_pixels[i + 2] = avg as u8;
+    }
+}
+
+#[cfg_attr(feature = "enable_wasm", wasm_bindgen)]
+pub fn grayscale_alpha(img: &mut PhotonImage) {
+    let end = img.get_raw_pixels().len();
+
+    for i in (0..end).step_by(4) {
+        let r_val = img.raw_pixels[i] as u32;
+        let g_val = img.raw_pixels[i + 1] as u32;
+        let b_val = img.raw_pixels[i + 2] as u32;
+        let mut avg: u32 = (r_val + g_val + b_val) / 3;
+        if avg >= 255 {
+            avg = 255
+        }
+
+        img.raw_pixels[i + 3] = (255 - avg) as u8;
     }
 }
 

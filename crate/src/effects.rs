@@ -198,7 +198,7 @@ pub fn multiple_offsets(
     photon_image.raw_pixels = raw_pixels;
 }
 
-/// Halftoning effect.
+#[cfg_attr(feature = "enable_wasm", wasm_bindgen)]
 pub fn halftone(photon_image: &mut PhotonImage) {
     let mut img = helpers::dyn_image_from_raw(photon_image);
     let (width, height) = img.dimensions();
