@@ -1,7 +1,8 @@
-let imports = {};
-imports['__wbindgen_placeholder__'] = module.exports;
 let wasm;
-const { TextEncoder, TextDecoder } = require(`util`);
+export function __wbg_set_wasm(val) {
+    wasm = val;
+}
+
 
 const heap = new Array(128).fill(undefined);
 
@@ -108,7 +109,9 @@ function getUint8Memory0() {
     return cachedUint8Memory0;
 }
 
-let cachedTextEncoder = new TextEncoder('utf-8');
+const lTextEncoder = typeof TextEncoder === 'undefined' ? (0, module.require)('util').TextEncoder : TextEncoder;
+
+let cachedTextEncoder = new lTextEncoder('utf-8');
 
 const encodeString = (typeof cachedTextEncoder.encodeInto === 'function'
     ? function (arg, view) {
@@ -171,7 +174,9 @@ function getInt32Memory0() {
     return cachedInt32Memory0;
 }
 
-let cachedTextDecoder = new TextDecoder('utf-8', { ignoreBOM: true, fatal: true });
+const lTextDecoder = typeof TextDecoder === 'undefined' ? (0, module.require)('util').TextDecoder : TextDecoder;
+
+let cachedTextDecoder = new lTextDecoder('utf-8', { ignoreBOM: true, fatal: true });
 
 cachedTextDecoder.decode();
 
@@ -223,10 +228,10 @@ function _assertClass(instance, klass) {
 * @param {number} channel
 * @param {number} amt
 */
-module.exports.alter_channel = function(img, channel, amt) {
+export function alter_channel(img, channel, amt) {
     _assertClass(img, PhotonImage);
     wasm.alter_channel(img.__wbg_ptr, channel, amt);
-};
+}
 
 /**
 * Increment or decrement every pixel's Red channel by a constant.
@@ -248,10 +253,10 @@ module.exports.alter_channel = function(img, channel, amt) {
 * @param {PhotonImage} photon_image
 * @param {number} amt
 */
-module.exports.alter_red_channel = function(photon_image, amt) {
+export function alter_red_channel(photon_image, amt) {
     _assertClass(photon_image, PhotonImage);
     wasm.alter_red_channel(photon_image.__wbg_ptr, amt);
-};
+}
 
 /**
 * Increment or decrement every pixel's Green channel by a constant.
@@ -273,10 +278,10 @@ module.exports.alter_red_channel = function(photon_image, amt) {
 * @param {PhotonImage} img
 * @param {number} amt
 */
-module.exports.alter_green_channel = function(img, amt) {
+export function alter_green_channel(img, amt) {
     _assertClass(img, PhotonImage);
     wasm.alter_green_channel(img.__wbg_ptr, amt);
-};
+}
 
 /**
 * Increment or decrement every pixel's Blue channel by a constant.
@@ -298,10 +303,10 @@ module.exports.alter_green_channel = function(img, amt) {
 * @param {PhotonImage} img
 * @param {number} amt
 */
-module.exports.alter_blue_channel = function(img, amt) {
+export function alter_blue_channel(img, amt) {
     _assertClass(img, PhotonImage);
     wasm.alter_blue_channel(img.__wbg_ptr, amt);
-};
+}
 
 /**
 * Increment/decrement two channels' values simultaneously by adding an amt to each channel per pixel.
@@ -329,10 +334,10 @@ module.exports.alter_blue_channel = function(img, amt) {
 * @param {number} channel2
 * @param {number} amt2
 */
-module.exports.alter_two_channels = function(img, channel1, amt1, channel2, amt2) {
+export function alter_two_channels(img, channel1, amt1, channel2, amt2) {
     _assertClass(img, PhotonImage);
     wasm.alter_two_channels(img.__wbg_ptr, channel1, amt1, channel2, amt2);
-};
+}
 
 /**
 * Increment all 3 channels' values by adding an amt to each channel per pixel.
@@ -359,10 +364,10 @@ module.exports.alter_two_channels = function(img, channel1, amt1, channel2, amt2
 * @param {number} g_amt
 * @param {number} b_amt
 */
-module.exports.alter_channels = function(img, r_amt, g_amt, b_amt) {
+export function alter_channels(img, r_amt, g_amt, b_amt) {
     _assertClass(img, PhotonImage);
     wasm.alter_channels(img.__wbg_ptr, r_amt, g_amt, b_amt);
-};
+}
 
 /**
 * Set a certain channel to zero, thus removing the channel's influence in the pixels' final rendered colour.
@@ -388,10 +393,10 @@ module.exports.alter_channels = function(img, r_amt, g_amt, b_amt) {
 * @param {number} channel
 * @param {number} min_filter
 */
-module.exports.remove_channel = function(img, channel, min_filter) {
+export function remove_channel(img, channel, min_filter) {
     _assertClass(img, PhotonImage);
     wasm.remove_channel(img.__wbg_ptr, channel, min_filter);
-};
+}
 
 /**
 * Remove the Red channel's influence in an image.
@@ -413,10 +418,10 @@ module.exports.remove_channel = function(img, channel, min_filter) {
 * @param {PhotonImage} img
 * @param {number} min_filter
 */
-module.exports.remove_red_channel = function(img, min_filter) {
+export function remove_red_channel(img, min_filter) {
     _assertClass(img, PhotonImage);
     wasm.remove_red_channel(img.__wbg_ptr, min_filter);
-};
+}
 
 /**
 * Remove the Green channel's influence in an image.
@@ -438,10 +443,10 @@ module.exports.remove_red_channel = function(img, min_filter) {
 * @param {PhotonImage} img
 * @param {number} min_filter
 */
-module.exports.remove_green_channel = function(img, min_filter) {
+export function remove_green_channel(img, min_filter) {
     _assertClass(img, PhotonImage);
     wasm.remove_green_channel(img.__wbg_ptr, min_filter);
-};
+}
 
 /**
 * Remove the Blue channel's influence in an image.
@@ -463,10 +468,10 @@ module.exports.remove_green_channel = function(img, min_filter) {
 * @param {PhotonImage} img
 * @param {number} min_filter
 */
-module.exports.remove_blue_channel = function(img, min_filter) {
+export function remove_blue_channel(img, min_filter) {
     _assertClass(img, PhotonImage);
     wasm.remove_blue_channel(img.__wbg_ptr, min_filter);
-};
+}
 
 /**
 * Swap two channels.
@@ -490,10 +495,10 @@ module.exports.remove_blue_channel = function(img, min_filter) {
 * @param {number} channel1
 * @param {number} channel2
 */
-module.exports.swap_channels = function(img, channel1, channel2) {
+export function swap_channels(img, channel1, channel2) {
     _assertClass(img, PhotonImage);
     wasm.swap_channels(img.__wbg_ptr, channel1, channel2);
-};
+}
 
 /**
 * Invert RGB value of an image.
@@ -511,10 +516,10 @@ module.exports.swap_channels = function(img, channel1, channel2) {
 * ```
 * @param {PhotonImage} photon_image
 */
-module.exports.invert = function(photon_image) {
+export function invert(photon_image) {
     _assertClass(photon_image, PhotonImage);
     wasm.invert(photon_image.__wbg_ptr);
-};
+}
 
 /**
 * Selective hue rotation.
@@ -543,12 +548,12 @@ module.exports.invert = function(photon_image) {
 * @param {Rgb} ref_color
 * @param {number} degrees
 */
-module.exports.selective_hue_rotate = function(photon_image, ref_color, degrees) {
+export function selective_hue_rotate(photon_image, ref_color, degrees) {
     _assertClass(photon_image, PhotonImage);
     _assertClass(ref_color, Rgb);
     var ptr0 = ref_color.__destroy_into_raw();
     wasm.selective_hue_rotate(photon_image.__wbg_ptr, ptr0, degrees);
-};
+}
 
 /**
 * Selectively change pixel colours which are similar to the reference colour provided.
@@ -580,14 +585,14 @@ module.exports.selective_hue_rotate = function(photon_image, ref_color, degrees)
 * @param {Rgb} new_color
 * @param {number} fraction
 */
-module.exports.selective_color_convert = function(photon_image, ref_color, new_color, fraction) {
+export function selective_color_convert(photon_image, ref_color, new_color, fraction) {
     _assertClass(photon_image, PhotonImage);
     _assertClass(ref_color, Rgb);
     var ptr0 = ref_color.__destroy_into_raw();
     _assertClass(new_color, Rgb);
     var ptr1 = new_color.__destroy_into_raw();
     wasm.selective_color_convert(photon_image.__wbg_ptr, ptr0, ptr1, fraction);
-};
+}
 
 /**
 * Selectively lighten an image.
@@ -615,12 +620,12 @@ module.exports.selective_color_convert = function(photon_image, ref_color, new_c
 * @param {Rgb} ref_color
 * @param {number} amt
 */
-module.exports.selective_lighten = function(img, ref_color, amt) {
+export function selective_lighten(img, ref_color, amt) {
     _assertClass(img, PhotonImage);
     _assertClass(ref_color, Rgb);
     var ptr0 = ref_color.__destroy_into_raw();
     wasm.selective_lighten(img.__wbg_ptr, ptr0, amt);
-};
+}
 
 /**
 * Selectively desaturate pixel colours which are similar to the reference colour provided.
@@ -649,12 +654,12 @@ module.exports.selective_lighten = function(img, ref_color, amt) {
 * @param {Rgb} ref_color
 * @param {number} amt
 */
-module.exports.selective_desaturate = function(img, ref_color, amt) {
+export function selective_desaturate(img, ref_color, amt) {
     _assertClass(img, PhotonImage);
     _assertClass(ref_color, Rgb);
     var ptr0 = ref_color.__destroy_into_raw();
     wasm.selective_desaturate(img.__wbg_ptr, ptr0, amt);
-};
+}
 
 /**
 * Selectively saturate pixel colours which are similar to the reference colour provided.
@@ -683,12 +688,12 @@ module.exports.selective_desaturate = function(img, ref_color, amt) {
 * @param {Rgb} ref_color
 * @param {number} amt
 */
-module.exports.selective_saturate = function(img, ref_color, amt) {
+export function selective_saturate(img, ref_color, amt) {
     _assertClass(img, PhotonImage);
     _assertClass(ref_color, Rgb);
     var ptr0 = ref_color.__destroy_into_raw();
     wasm.selective_saturate(img.__wbg_ptr, ptr0, amt);
-};
+}
 
 /**
 * Selectively changes a pixel to greyscale if it is *not* visually similar or close to the colour specified.
@@ -716,13 +721,13 @@ module.exports.selective_saturate = function(img, ref_color, amt) {
 * @param {PhotonImage} photon_image
 * @param {Rgb} ref_color
 */
-module.exports.selective_greyscale = function(photon_image, ref_color) {
+export function selective_greyscale(photon_image, ref_color) {
     _assertClass(photon_image, PhotonImage);
     var ptr0 = photon_image.__destroy_into_raw();
     _assertClass(ref_color, Rgb);
     var ptr1 = ref_color.__destroy_into_raw();
     wasm.selective_greyscale(ptr0, ptr1);
-};
+}
 
 /**
 * Add randomized noise to an image.
@@ -746,10 +751,10 @@ module.exports.selective_greyscale = function(photon_image, ref_color) {
 * ```
 * @param {PhotonImage} photon_image
 */
-module.exports.add_noise_rand = function(photon_image) {
+export function add_noise_rand(photon_image) {
     _assertClass(photon_image, PhotonImage);
     wasm.add_noise_rand(photon_image.__wbg_ptr);
-};
+}
 
 /**
 * Add pink-tinted noise to an image.
@@ -771,10 +776,10 @@ module.exports.add_noise_rand = function(photon_image) {
 * ```
 * @param {PhotonImage} photon_image
 */
-module.exports.pink_noise = function(photon_image) {
+export function pink_noise(photon_image) {
     _assertClass(photon_image, PhotonImage);
     wasm.pink_noise(photon_image.__wbg_ptr);
-};
+}
 
 /**
 * Add bordered-text to an image.
@@ -803,12 +808,12 @@ module.exports.pink_noise = function(photon_image) {
 * @param {number} x
 * @param {number} y
 */
-module.exports.draw_text_with_border = function(photon_img, text, x, y) {
+export function draw_text_with_border(photon_img, text, x, y) {
     _assertClass(photon_img, PhotonImage);
     const ptr0 = passStringToWasm0(text, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
     const len0 = WASM_VECTOR_LEN;
     wasm.draw_text_with_border(photon_img.__wbg_ptr, ptr0, len0, x, y);
-};
+}
 
 /**
 * Add text to an image.
@@ -837,12 +842,12 @@ module.exports.draw_text_with_border = function(photon_img, text, x, y) {
 * @param {number} x
 * @param {number} y
 */
-module.exports.draw_text = function(photon_img, text, x, y) {
+export function draw_text(photon_img, text, x, y) {
     _assertClass(photon_img, PhotonImage);
     const ptr0 = passStringToWasm0(text, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
     const len0 = WASM_VECTOR_LEN;
     wasm.draw_text(photon_img.__wbg_ptr, ptr0, len0, x, y);
-};
+}
 
 /**
 * Crop an image.
@@ -869,11 +874,11 @@ module.exports.draw_text = function(photon_img, text, x, y) {
 * @param {number} y2
 * @returns {PhotonImage}
 */
-module.exports.crop = function(photon_image, x1, y1, x2, y2) {
+export function crop(photon_image, x1, y1, x2, y2) {
     _assertClass(photon_image, PhotonImage);
     const ret = wasm.crop(photon_image.__wbg_ptr, x1, y1, x2, y2);
     return PhotonImage.__wrap(ret);
-};
+}
 
 /**
 * @param {HTMLCanvasElement} source_canvas
@@ -883,10 +888,10 @@ module.exports.crop = function(photon_image, x1, y1, x2, y2) {
 * @param {number} top
 * @returns {HTMLCanvasElement}
 */
-module.exports.crop_img_browser = function(source_canvas, width, height, left, top) {
+export function crop_img_browser(source_canvas, width, height, left, top) {
     const ret = wasm.crop_img_browser(addHeapObject(source_canvas), width, height, left, top);
     return takeObject(ret);
-};
+}
 
 /**
 * Flip an image horizontally.
@@ -906,10 +911,10 @@ module.exports.crop_img_browser = function(source_canvas, width, height, left, t
 * ```
 * @param {PhotonImage} photon_image
 */
-module.exports.fliph = function(photon_image) {
+export function fliph(photon_image) {
     _assertClass(photon_image, PhotonImage);
     wasm.fliph(photon_image.__wbg_ptr);
-};
+}
 
 /**
 * Flip an image vertically.
@@ -929,10 +934,10 @@ module.exports.fliph = function(photon_image) {
 * ```
 * @param {PhotonImage} photon_image
 */
-module.exports.flipv = function(photon_image) {
+export function flipv(photon_image) {
     _assertClass(photon_image, PhotonImage);
     wasm.flipv(photon_image.__wbg_ptr);
-};
+}
 
 /**
 * Resize an image on the web.
@@ -948,11 +953,11 @@ module.exports.flipv = function(photon_image) {
 * @param {SamplingFilter} sampling_filter
 * @returns {HTMLCanvasElement}
 */
-module.exports.resize_img_browser = function(photon_img, width, height, sampling_filter) {
+export function resize_img_browser(photon_img, width, height, sampling_filter) {
     _assertClass(photon_img, PhotonImage);
     const ret = wasm.resize_img_browser(photon_img.__wbg_ptr, width, height, sampling_filter);
     return takeObject(ret);
-};
+}
 
 /**
 * Resize an image.
@@ -968,11 +973,11 @@ module.exports.resize_img_browser = function(photon_img, width, height, sampling
 * @param {SamplingFilter} sampling_filter
 * @returns {PhotonImage}
 */
-module.exports.resize = function(photon_img, width, height, sampling_filter) {
+export function resize(photon_img, width, height, sampling_filter) {
     _assertClass(photon_img, PhotonImage);
     const ret = wasm.resize(photon_img.__wbg_ptr, width, height, sampling_filter);
     return PhotonImage.__wrap(ret);
-};
+}
 
 /**
 * Resize image using seam carver.
@@ -1000,21 +1005,21 @@ module.exports.resize = function(photon_img, width, height, sampling_filter) {
 * @param {number} height
 * @returns {PhotonImage}
 */
-module.exports.seam_carve = function(img, width, height) {
+export function seam_carve(img, width, height) {
     _assertClass(img, PhotonImage);
     const ret = wasm.seam_carve(img.__wbg_ptr, width, height);
     return PhotonImage.__wrap(ret);
-};
+}
 
 /**
 * @param {PhotonImage} img
 * @returns {PhotonImage}
 */
-module.exports.grayscale_and_crop = function(img) {
+export function grayscale_and_crop(img) {
     _assertClass(img, PhotonImage);
     const ret = wasm.grayscale_and_crop(img.__wbg_ptr);
     return PhotonImage.__wrap(ret);
-};
+}
 
 /**
 * Apply uniform padding around the PhotonImage
@@ -1041,13 +1046,13 @@ module.exports.grayscale_and_crop = function(img) {
 * @param {Rgba} padding_rgba
 * @returns {PhotonImage}
 */
-module.exports.padding_uniform = function(img, padding, padding_rgba) {
+export function padding_uniform(img, padding, padding_rgba) {
     _assertClass(img, PhotonImage);
     _assertClass(padding_rgba, Rgba);
     var ptr0 = padding_rgba.__destroy_into_raw();
     const ret = wasm.padding_uniform(img.__wbg_ptr, padding, ptr0);
     return PhotonImage.__wrap(ret);
-};
+}
 
 /**
 * Apply padding on the left side of the PhotonImage
@@ -1074,13 +1079,13 @@ module.exports.padding_uniform = function(img, padding, padding_rgba) {
 * @param {Rgba} padding_rgba
 * @returns {PhotonImage}
 */
-module.exports.padding_left = function(img, padding, padding_rgba) {
+export function padding_left(img, padding, padding_rgba) {
     _assertClass(img, PhotonImage);
     _assertClass(padding_rgba, Rgba);
     var ptr0 = padding_rgba.__destroy_into_raw();
     const ret = wasm.padding_left(img.__wbg_ptr, padding, ptr0);
     return PhotonImage.__wrap(ret);
-};
+}
 
 /**
 * Apply padding on the left side of the PhotonImage
@@ -1107,13 +1112,13 @@ module.exports.padding_left = function(img, padding, padding_rgba) {
 * @param {Rgba} padding_rgba
 * @returns {PhotonImage}
 */
-module.exports.padding_right = function(img, padding, padding_rgba) {
+export function padding_right(img, padding, padding_rgba) {
     _assertClass(img, PhotonImage);
     _assertClass(padding_rgba, Rgba);
     var ptr0 = padding_rgba.__destroy_into_raw();
     const ret = wasm.padding_right(img.__wbg_ptr, padding, ptr0);
     return PhotonImage.__wrap(ret);
-};
+}
 
 /**
 * Apply padding on the left side of the PhotonImage
@@ -1140,13 +1145,13 @@ module.exports.padding_right = function(img, padding, padding_rgba) {
 * @param {Rgba} padding_rgba
 * @returns {PhotonImage}
 */
-module.exports.padding_top = function(img, padding, padding_rgba) {
+export function padding_top(img, padding, padding_rgba) {
     _assertClass(img, PhotonImage);
     _assertClass(padding_rgba, Rgba);
     var ptr0 = padding_rgba.__destroy_into_raw();
     const ret = wasm.padding_top(img.__wbg_ptr, padding, ptr0);
     return PhotonImage.__wrap(ret);
-};
+}
 
 /**
 * Apply padding on the left side of the PhotonImage
@@ -1173,13 +1178,13 @@ module.exports.padding_top = function(img, padding, padding_rgba) {
 * @param {Rgba} padding_rgba
 * @returns {PhotonImage}
 */
-module.exports.padding_bottom = function(img, padding, padding_rgba) {
+export function padding_bottom(img, padding, padding_rgba) {
     _assertClass(img, PhotonImage);
     _assertClass(padding_rgba, Rgba);
     var ptr0 = padding_rgba.__destroy_into_raw();
     const ret = wasm.padding_bottom(img.__wbg_ptr, padding, ptr0);
     return PhotonImage.__wrap(ret);
-};
+}
 
 /**
 * Rotate the PhotonImage on an arbitrary angle
@@ -1204,11 +1209,11 @@ module.exports.padding_bottom = function(img, padding, padding_rgba) {
 * @param {number} angle
 * @returns {PhotonImage}
 */
-module.exports.rotate = function(img, angle) {
+export function rotate(img, angle) {
     _assertClass(img, PhotonImage);
     const ret = wasm.rotate(img.__wbg_ptr, angle);
     return PhotonImage.__wrap(ret);
-};
+}
 
 /**
 * Resample the PhotonImage.
@@ -1233,11 +1238,11 @@ module.exports.rotate = function(img, angle) {
 * @param {number} dst_height
 * @returns {PhotonImage}
 */
-module.exports.resample = function(img, dst_width, dst_height) {
+export function resample(img, dst_width, dst_height) {
     _assertClass(img, PhotonImage);
     const ret = wasm.resample(img.__wbg_ptr, dst_width, dst_height);
     return PhotonImage.__wrap(ret);
-};
+}
 
 /**
 * Add a watermark to an image.
@@ -1263,11 +1268,11 @@ module.exports.resample = function(img, dst_width, dst_height) {
 * @param {bigint} x
 * @param {bigint} y
 */
-module.exports.watermark = function(img, watermark, x, y) {
+export function watermark(img, watermark, x, y) {
     _assertClass(img, PhotonImage);
     _assertClass(watermark, PhotonImage);
     wasm.watermark(img.__wbg_ptr, watermark.__wbg_ptr, x, y);
-};
+}
 
 /**
 * Blend two images together.
@@ -1297,32 +1302,32 @@ module.exports.watermark = function(img, watermark, x, y) {
 * @param {PhotonImage} photon_image2
 * @param {string} blend_mode
 */
-module.exports.blend = function(photon_image, photon_image2, blend_mode) {
+export function blend(photon_image, photon_image2, blend_mode) {
     _assertClass(photon_image, PhotonImage);
     _assertClass(photon_image2, PhotonImage);
     const ptr0 = passStringToWasm0(blend_mode, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
     const len0 = WASM_VECTOR_LEN;
     wasm.blend(photon_image.__wbg_ptr, photon_image2.__wbg_ptr, ptr0, len0);
-};
+}
 
 /**
 * @param {number} width
 * @param {number} height
 * @returns {PhotonImage}
 */
-module.exports.create_gradient = function(width, height) {
+export function create_gradient(width, height) {
     const ret = wasm.create_gradient(width, height);
     return PhotonImage.__wrap(ret);
-};
+}
 
 /**
 * Apply a gradient to an image.
 * @param {PhotonImage} image
 */
-module.exports.apply_gradient = function(image) {
+export function apply_gradient(image) {
     _assertClass(image, PhotonImage);
     wasm.apply_gradient(image.__wbg_ptr);
-};
+}
 
 /**
 * Adds an offset to the image by a certain number of pixels.
@@ -1347,10 +1352,10 @@ module.exports.apply_gradient = function(image) {
 * @param {number} channel_index
 * @param {number} offset
 */
-module.exports.offset = function(photon_image, channel_index, offset) {
+export function offset(photon_image, channel_index, offset) {
     _assertClass(photon_image, PhotonImage);
     wasm.offset(photon_image.__wbg_ptr, channel_index, offset);
-};
+}
 
 /**
 * Adds an offset to the red channel by a certain number of pixels.
@@ -1371,10 +1376,10 @@ module.exports.offset = function(photon_image, channel_index, offset) {
 * @param {PhotonImage} img
 * @param {number} offset_amt
 */
-module.exports.offset_red = function(img, offset_amt) {
+export function offset_red(img, offset_amt) {
     _assertClass(img, PhotonImage);
     wasm.offset_red(img.__wbg_ptr, offset_amt);
-};
+}
 
 /**
 * Adds an offset to the green channel by a certain number of pixels.
@@ -1395,10 +1400,10 @@ module.exports.offset_red = function(img, offset_amt) {
 * @param {PhotonImage} img
 * @param {number} offset_amt
 */
-module.exports.offset_green = function(img, offset_amt) {
+export function offset_green(img, offset_amt) {
     _assertClass(img, PhotonImage);
     wasm.offset_green(img.__wbg_ptr, offset_amt);
-};
+}
 
 /**
 * Adds an offset to the blue channel by a certain number of pixels.
@@ -1419,10 +1424,10 @@ module.exports.offset_green = function(img, offset_amt) {
 * @param {PhotonImage} img
 * @param {number} offset_amt
 */
-module.exports.offset_blue = function(img, offset_amt) {
+export function offset_blue(img, offset_amt) {
     _assertClass(img, PhotonImage);
     wasm.offset_blue(img.__wbg_ptr, offset_amt);
-};
+}
 
 /**
 * Adds multiple offsets to the image by a certain number of pixels (on two channels).
@@ -1445,18 +1450,18 @@ module.exports.offset_blue = function(img, offset_amt) {
 * @param {number} channel_index
 * @param {number} channel_index2
 */
-module.exports.multiple_offsets = function(photon_image, offset, channel_index, channel_index2) {
+export function multiple_offsets(photon_image, offset, channel_index, channel_index2) {
     _assertClass(photon_image, PhotonImage);
     wasm.multiple_offsets(photon_image.__wbg_ptr, offset, channel_index, channel_index2);
-};
+}
 
 /**
 * @param {PhotonImage} photon_image
 */
-module.exports.halftone = function(photon_image) {
+export function halftone(photon_image) {
     _assertClass(photon_image, PhotonImage);
     wasm.halftone(photon_image.__wbg_ptr);
-};
+}
 
 /**
 * Reduces an image to the primary colours.
@@ -1475,10 +1480,10 @@ module.exports.halftone = function(photon_image) {
 * ```
 * @param {PhotonImage} img
 */
-module.exports.primary = function(img) {
+export function primary(img) {
     _assertClass(img, PhotonImage);
     wasm.primary(img.__wbg_ptr);
-};
+}
 
 /**
 * Colorizes the green channels of the image.
@@ -1497,10 +1502,10 @@ module.exports.primary = function(img) {
 * ```
 * @param {PhotonImage} photon_image
 */
-module.exports.colorize = function(photon_image) {
+export function colorize(photon_image) {
     _assertClass(photon_image, PhotonImage);
     wasm.colorize(photon_image.__wbg_ptr);
-};
+}
 
 /**
 * Applies a solarizing effect to an image.
@@ -1519,10 +1524,10 @@ module.exports.colorize = function(photon_image) {
 * ```
 * @param {PhotonImage} photon_image
 */
-module.exports.solarize = function(photon_image) {
+export function solarize(photon_image) {
     _assertClass(photon_image, PhotonImage);
     wasm.solarize(photon_image.__wbg_ptr);
-};
+}
 
 /**
 * Applies a solarizing effect to an image and returns the resulting PhotonImage.
@@ -1543,11 +1548,11 @@ module.exports.solarize = function(photon_image) {
 * @param {PhotonImage} photon_image
 * @returns {PhotonImage}
 */
-module.exports.solarize_retimg = function(photon_image) {
+export function solarize_retimg(photon_image) {
     _assertClass(photon_image, PhotonImage);
     const ret = wasm.solarize_retimg(photon_image.__wbg_ptr);
     return PhotonImage.__wrap(ret);
-};
+}
 
 /**
 * Increase the brightness of an image by a factor.
@@ -1567,10 +1572,10 @@ module.exports.solarize_retimg = function(photon_image) {
 * @param {PhotonImage} photon_image
 * @param {number} brightness
 */
-module.exports.inc_brightness = function(photon_image, brightness) {
+export function inc_brightness(photon_image, brightness) {
     _assertClass(photon_image, PhotonImage);
     wasm.inc_brightness(photon_image.__wbg_ptr, brightness);
-};
+}
 
 /**
 * Adjust the contrast of an image by a factor.
@@ -1591,10 +1596,10 @@ module.exports.inc_brightness = function(photon_image, brightness) {
 * @param {PhotonImage} photon_image
 * @param {number} contrast
 */
-module.exports.adjust_contrast = function(photon_image, contrast) {
+export function adjust_contrast(photon_image, contrast) {
     _assertClass(photon_image, PhotonImage);
     wasm.adjust_contrast(photon_image.__wbg_ptr, contrast);
-};
+}
 
 /**
 * Tint an image by adding an offset to averaged RGB channel values.
@@ -1619,10 +1624,10 @@ module.exports.adjust_contrast = function(photon_image, contrast) {
 * @param {number} g_offset
 * @param {number} b_offset
 */
-module.exports.tint = function(photon_image, r_offset, g_offset, b_offset) {
+export function tint(photon_image, r_offset, g_offset, b_offset) {
     _assertClass(photon_image, PhotonImage);
     wasm.tint(photon_image.__wbg_ptr, r_offset, g_offset, b_offset);
-};
+}
 
 /**
 * Horizontal strips. Divide an image into a series of equal-height strips, for an artistic effect.
@@ -1643,10 +1648,10 @@ module.exports.tint = function(photon_image, r_offset, g_offset, b_offset) {
 * @param {PhotonImage} photon_image
 * @param {number} num_strips
 */
-module.exports.horizontal_strips = function(photon_image, num_strips) {
+export function horizontal_strips(photon_image, num_strips) {
     _assertClass(photon_image, PhotonImage);
     wasm.horizontal_strips(photon_image.__wbg_ptr, num_strips);
-};
+}
 
 /**
 * Horizontal strips. Divide an image into a series of equal-width strips, for an artistic effect. Sepcify a color as well.
@@ -1671,12 +1676,12 @@ module.exports.horizontal_strips = function(photon_image, num_strips) {
 * @param {number} num_strips
 * @param {Rgb} color
 */
-module.exports.color_horizontal_strips = function(photon_image, num_strips, color) {
+export function color_horizontal_strips(photon_image, num_strips, color) {
     _assertClass(photon_image, PhotonImage);
     _assertClass(color, Rgb);
     var ptr0 = color.__destroy_into_raw();
     wasm.color_horizontal_strips(photon_image.__wbg_ptr, num_strips, ptr0);
-};
+}
 
 /**
 * Vertical strips. Divide an image into a series of equal-width strips, for an artistic effect.
@@ -1697,10 +1702,10 @@ module.exports.color_horizontal_strips = function(photon_image, num_strips, colo
 * @param {PhotonImage} photon_image
 * @param {number} num_strips
 */
-module.exports.vertical_strips = function(photon_image, num_strips) {
+export function vertical_strips(photon_image, num_strips) {
     _assertClass(photon_image, PhotonImage);
     wasm.vertical_strips(photon_image.__wbg_ptr, num_strips);
-};
+}
 
 /**
 * Vertical strips. Divide an image into a series of equal-width strips, for an artistic effect. Sepcify a color as well.
@@ -1725,12 +1730,12 @@ module.exports.vertical_strips = function(photon_image, num_strips) {
 * @param {number} num_strips
 * @param {Rgb} color
 */
-module.exports.color_vertical_strips = function(photon_image, num_strips, color) {
+export function color_vertical_strips(photon_image, num_strips, color) {
     _assertClass(photon_image, PhotonImage);
     _assertClass(color, Rgb);
     var ptr0 = color.__destroy_into_raw();
     wasm.color_vertical_strips(photon_image.__wbg_ptr, num_strips, ptr0);
-};
+}
 
 /**
 * Turn an image into an oil painting
@@ -1753,10 +1758,10 @@ module.exports.color_vertical_strips = function(photon_image, num_strips, color)
 * @param {number} radius
 * @param {number} intensity
 */
-module.exports.oil = function(photon_image, radius, intensity) {
+export function oil(photon_image, radius, intensity) {
     _assertClass(photon_image, PhotonImage);
     wasm.oil(photon_image.__wbg_ptr, radius, intensity);
-};
+}
 
 /**
 * Turn an image into an frosted glass see through
@@ -1775,10 +1780,10 @@ module.exports.oil = function(photon_image, radius, intensity) {
 * ```
 * @param {PhotonImage} photon_image
 */
-module.exports.frosted_glass = function(photon_image) {
+export function frosted_glass(photon_image) {
     _assertClass(photon_image, PhotonImage);
     wasm.frosted_glass(photon_image.__wbg_ptr);
-};
+}
 
 /**
 * Pixelize an image.
@@ -1799,10 +1804,10 @@ module.exports.frosted_glass = function(photon_image) {
 * @param {PhotonImage} photon_image
 * @param {number} pixel_size
 */
-module.exports.pixelize = function(photon_image, pixel_size) {
+export function pixelize(photon_image, pixel_size) {
     _assertClass(photon_image, PhotonImage);
     wasm.pixelize(photon_image.__wbg_ptr, pixel_size);
-};
+}
 
 /**
 * Normalizes an image by remapping its range of pixels values. Only RGB
@@ -1822,10 +1827,10 @@ module.exports.pixelize = function(photon_image, pixel_size) {
 * ```
 * @param {PhotonImage} photon_image
 */
-module.exports.normalize = function(photon_image) {
+export function normalize(photon_image) {
     _assertClass(photon_image, PhotonImage);
     wasm.normalize(photon_image.__wbg_ptr);
-};
+}
 
 /**
 * Applies Floyd-Steinberg dithering to an image.
@@ -1847,24 +1852,24 @@ module.exports.normalize = function(photon_image) {
 * @param {PhotonImage} photon_image
 * @param {number} depth
 */
-module.exports.dither = function(photon_image, depth) {
+export function dither(photon_image, depth) {
     _assertClass(photon_image, PhotonImage);
     wasm.dither(photon_image.__wbg_ptr, depth);
-};
+}
 
 /**
 * @param {PhotonImage} photon_image
 * @param {Rgb} color_a
 * @param {Rgb} color_b
 */
-module.exports.duotone = function(photon_image, color_a, color_b) {
+export function duotone(photon_image, color_a, color_b) {
     _assertClass(photon_image, PhotonImage);
     _assertClass(color_a, Rgb);
     var ptr0 = color_a.__destroy_into_raw();
     _assertClass(color_b, Rgb);
     var ptr1 = color_b.__destroy_into_raw();
     wasm.duotone(photon_image.__wbg_ptr, ptr0, ptr1);
-};
+}
 
 /**
 * Solarization on the Blue channel.
@@ -1882,10 +1887,10 @@ module.exports.duotone = function(photon_image, color_a, color_b) {
 * ```
 * @param {PhotonImage} photon_image
 */
-module.exports.neue = function(photon_image) {
+export function neue(photon_image) {
     _assertClass(photon_image, PhotonImage);
     wasm.neue(photon_image.__wbg_ptr);
-};
+}
 
 /**
 * Solarization on the Red and Green channels.
@@ -1903,10 +1908,10 @@ module.exports.neue = function(photon_image) {
 * ```
 * @param {PhotonImage} photon_image
 */
-module.exports.lix = function(photon_image) {
+export function lix(photon_image) {
     _assertClass(photon_image, PhotonImage);
     wasm.lix(photon_image.__wbg_ptr);
-};
+}
 
 /**
 * Solarization on the Red and Blue channels.
@@ -1924,10 +1929,10 @@ module.exports.lix = function(photon_image) {
 * ```
 * @param {PhotonImage} photon_image
 */
-module.exports.ryo = function(photon_image) {
+export function ryo(photon_image) {
     _assertClass(photon_image, PhotonImage);
     wasm.ryo(photon_image.__wbg_ptr);
-};
+}
 
 /**
 * Apply a filter to an image. Over 20 filters are available.
@@ -1963,12 +1968,12 @@ module.exports.ryo = function(photon_image) {
 * @param {PhotonImage} img
 * @param {string} filter_name
 */
-module.exports.filter = function(img, filter_name) {
+export function filter(img, filter_name) {
     _assertClass(img, PhotonImage);
     const ptr0 = passStringToWasm0(filter_name, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
     const len0 = WASM_VECTOR_LEN;
     wasm.filter(img.__wbg_ptr, ptr0, len0);
-};
+}
 
 /**
 * Apply a lofi effect to an image.
@@ -1986,10 +1991,10 @@ module.exports.filter = function(img, filter_name) {
 * ```
 * @param {PhotonImage} img
 */
-module.exports.lofi = function(img) {
+export function lofi(img) {
     _assertClass(img, PhotonImage);
     wasm.lofi(img.__wbg_ptr);
-};
+}
 
 /**
 * Apply a rose tint to an image.
@@ -2007,10 +2012,10 @@ module.exports.lofi = function(img) {
 * ```
 * @param {PhotonImage} img
 */
-module.exports.pastel_pink = function(img) {
+export function pastel_pink(img) {
     _assertClass(img, PhotonImage);
     wasm.pastel_pink(img.__wbg_ptr);
-};
+}
 
 /**
 * Apply a vintage, golden hue to an image.
@@ -2028,10 +2033,10 @@ module.exports.pastel_pink = function(img) {
 * ```
 * @param {PhotonImage} img
 */
-module.exports.golden = function(img) {
+export function golden(img) {
     _assertClass(img, PhotonImage);
     wasm.golden(img.__wbg_ptr);
-};
+}
 
 /**
 * Increased contrast filter effect.
@@ -2049,10 +2054,10 @@ module.exports.golden = function(img) {
 * ```
 * @param {PhotonImage} img
 */
-module.exports.cali = function(img) {
+export function cali(img) {
     _assertClass(img, PhotonImage);
     wasm.cali(img.__wbg_ptr);
-};
+}
 
 /**
 * Greyscale effect with increased contrast.
@@ -2070,10 +2075,10 @@ module.exports.cali = function(img) {
 * ```
 * @param {PhotonImage} img
 */
-module.exports.dramatic = function(img) {
+export function dramatic(img) {
     _assertClass(img, PhotonImage);
     wasm.dramatic(img.__wbg_ptr);
-};
+}
 
 /**
 * Monochrome tint effect with increased contrast
@@ -2095,12 +2100,12 @@ module.exports.dramatic = function(img) {
 * @param {PhotonImage} img
 * @param {Rgb} rgb_color
 */
-module.exports.monochrome_tint = function(img, rgb_color) {
+export function monochrome_tint(img, rgb_color) {
     _assertClass(img, PhotonImage);
     _assertClass(rgb_color, Rgb);
     var ptr0 = rgb_color.__destroy_into_raw();
     wasm.monochrome_tint(img.__wbg_ptr, ptr0);
-};
+}
 
 /**
 * Duotone effect with blue and purple tones.
@@ -2118,10 +2123,10 @@ module.exports.monochrome_tint = function(img, rgb_color) {
 * ```
 * @param {PhotonImage} img
 */
-module.exports.duotone_violette = function(img) {
+export function duotone_violette(img) {
     _assertClass(img, PhotonImage);
     wasm.duotone_violette(img.__wbg_ptr);
-};
+}
 
 /**
 * Duotone effect with purple tones.
@@ -2139,10 +2144,10 @@ module.exports.duotone_violette = function(img) {
 * ```
 * @param {PhotonImage} img
 */
-module.exports.duotone_horizon = function(img) {
+export function duotone_horizon(img) {
     _assertClass(img, PhotonImage);
     wasm.duotone_horizon(img.__wbg_ptr);
-};
+}
 
 /**
 * A duotone filter with a user-specified color and a gray color
@@ -2164,12 +2169,12 @@ module.exports.duotone_horizon = function(img) {
 * @param {PhotonImage} img
 * @param {Rgb} rgb_color
 */
-module.exports.duotone_tint = function(img, rgb_color) {
+export function duotone_tint(img, rgb_color) {
     _assertClass(img, PhotonImage);
     _assertClass(rgb_color, Rgb);
     var ptr0 = rgb_color.__destroy_into_raw();
     wasm.duotone_tint(img.__wbg_ptr, ptr0);
-};
+}
 
 /**
 * Duotone effect with a lilac hue
@@ -2187,10 +2192,10 @@ module.exports.duotone_tint = function(img, rgb_color) {
 * ```
 * @param {PhotonImage} img
 */
-module.exports.duotone_lilac = function(img) {
+export function duotone_lilac(img) {
     _assertClass(img, PhotonImage);
     wasm.duotone_lilac(img.__wbg_ptr);
-};
+}
 
 /**
 * A duotone ochre tint effect
@@ -2208,10 +2213,10 @@ module.exports.duotone_lilac = function(img) {
 * ```
 * @param {PhotonImage} img
 */
-module.exports.duotone_ochre = function(img) {
+export function duotone_ochre(img) {
     _assertClass(img, PhotonImage);
     wasm.duotone_ochre(img.__wbg_ptr);
-};
+}
 
 /**
 * Apply a red hue, with increased contrast and brightness.
@@ -2229,10 +2234,10 @@ module.exports.duotone_ochre = function(img) {
 * ```
 * @param {PhotonImage} img
 */
-module.exports.firenze = function(img) {
+export function firenze(img) {
     _assertClass(img, PhotonImage);
     wasm.firenze(img.__wbg_ptr);
-};
+}
 
 /**
 * Apply a greyscale effect with increased contrast.
@@ -2250,10 +2255,10 @@ module.exports.firenze = function(img) {
 * ```
 * @param {PhotonImage} img
 */
-module.exports.obsidian = function(img) {
+export function obsidian(img) {
     _assertClass(img, PhotonImage);
     wasm.obsidian(img.__wbg_ptr);
-};
+}
 
 /**
 * Applies gamma correction to an image.
@@ -2277,10 +2282,10 @@ module.exports.obsidian = function(img) {
 * @param {number} green
 * @param {number} blue
 */
-module.exports.gamma_correction = function(photon_image, red, green, blue) {
+export function gamma_correction(photon_image, red, green, blue) {
     _assertClass(photon_image, PhotonImage);
     wasm.gamma_correction(photon_image.__wbg_ptr, red, green, blue);
-};
+}
 
 /**
 * Image manipulation effects in the HSLuv colour space
@@ -2310,12 +2315,12 @@ module.exports.gamma_correction = function(photon_image, red, green, blue) {
 * @param {string} mode
 * @param {number} amt
 */
-module.exports.hsluv = function(photon_image, mode, amt) {
+export function hsluv(photon_image, mode, amt) {
     _assertClass(photon_image, PhotonImage);
     const ptr0 = passStringToWasm0(mode, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
     const len0 = WASM_VECTOR_LEN;
     wasm.hsluv(photon_image.__wbg_ptr, ptr0, len0, amt);
-};
+}
 
 /**
 * Image manipulation effects in the LCh colour space
@@ -2345,12 +2350,12 @@ module.exports.hsluv = function(photon_image, mode, amt) {
 * @param {string} mode
 * @param {number} amt
 */
-module.exports.lch = function(photon_image, mode, amt) {
+export function lch(photon_image, mode, amt) {
     _assertClass(photon_image, PhotonImage);
     const ptr0 = passStringToWasm0(mode, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
     const len0 = WASM_VECTOR_LEN;
     wasm.lch(photon_image.__wbg_ptr, ptr0, len0, amt);
-};
+}
 
 /**
 * Image manipulation effects in the HSL colour space.
@@ -2380,12 +2385,12 @@ module.exports.lch = function(photon_image, mode, amt) {
 * @param {string} mode
 * @param {number} amt
 */
-module.exports.hsl = function(photon_image, mode, amt) {
+export function hsl(photon_image, mode, amt) {
     _assertClass(photon_image, PhotonImage);
     const ptr0 = passStringToWasm0(mode, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
     const len0 = WASM_VECTOR_LEN;
     wasm.hsl(photon_image.__wbg_ptr, ptr0, len0, amt);
-};
+}
 
 /**
 * Image manipulation in the HSV colour space.
@@ -2416,12 +2421,12 @@ module.exports.hsl = function(photon_image, mode, amt) {
 * @param {string} mode
 * @param {number} amt
 */
-module.exports.hsv = function(photon_image, mode, amt) {
+export function hsv(photon_image, mode, amt) {
     _assertClass(photon_image, PhotonImage);
     const ptr0 = passStringToWasm0(mode, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
     const len0 = WASM_VECTOR_LEN;
     wasm.hsv(photon_image.__wbg_ptr, ptr0, len0, amt);
-};
+}
 
 /**
 * Shift hue by a specified number of degrees in the HSL colour space.
@@ -2442,10 +2447,10 @@ module.exports.hsv = function(photon_image, mode, amt) {
 * @param {PhotonImage} img
 * @param {number} degrees
 */
-module.exports.hue_rotate_hsl = function(img, degrees) {
+export function hue_rotate_hsl(img, degrees) {
     _assertClass(img, PhotonImage);
     wasm.hue_rotate_hsl(img.__wbg_ptr, degrees);
-};
+}
 
 /**
 * Shift hue by a specified number of degrees in the HSV colour space.
@@ -2466,10 +2471,10 @@ module.exports.hue_rotate_hsl = function(img, degrees) {
 * @param {PhotonImage} img
 * @param {number} degrees
 */
-module.exports.hue_rotate_hsv = function(img, degrees) {
+export function hue_rotate_hsv(img, degrees) {
     _assertClass(img, PhotonImage);
     wasm.hue_rotate_hsv(img.__wbg_ptr, degrees);
-};
+}
 
 /**
 * Shift hue by a specified number of degrees in the LCh colour space.
@@ -2490,10 +2495,10 @@ module.exports.hue_rotate_hsv = function(img, degrees) {
 * @param {PhotonImage} img
 * @param {number} degrees
 */
-module.exports.hue_rotate_lch = function(img, degrees) {
+export function hue_rotate_lch(img, degrees) {
     _assertClass(img, PhotonImage);
     wasm.hue_rotate_lch(img.__wbg_ptr, degrees);
-};
+}
 
 /**
 * Shift hue by a specified number of degrees in the HSLuv colour space.
@@ -2514,10 +2519,10 @@ module.exports.hue_rotate_lch = function(img, degrees) {
 * @param {PhotonImage} img
 * @param {number} degrees
 */
-module.exports.hue_rotate_hsluv = function(img, degrees) {
+export function hue_rotate_hsluv(img, degrees) {
     _assertClass(img, PhotonImage);
     wasm.hue_rotate_hsluv(img.__wbg_ptr, degrees);
-};
+}
 
 /**
 * Increase the image's saturation by converting each pixel's colour to the HSL colour space
@@ -2541,10 +2546,10 @@ module.exports.hue_rotate_hsluv = function(img, degrees) {
 * @param {PhotonImage} img
 * @param {number} level
 */
-module.exports.saturate_hsl = function(img, level) {
+export function saturate_hsl(img, level) {
     _assertClass(img, PhotonImage);
     wasm.saturate_hsl(img.__wbg_ptr, level);
-};
+}
 
 /**
 * Increase the image's saturation in the LCh colour space.
@@ -2567,10 +2572,10 @@ module.exports.saturate_hsl = function(img, level) {
 * @param {PhotonImage} img
 * @param {number} level
 */
-module.exports.saturate_lch = function(img, level) {
+export function saturate_lch(img, level) {
     _assertClass(img, PhotonImage);
     wasm.saturate_lch(img.__wbg_ptr, level);
-};
+}
 
 /**
 * Increase the image's saturation in the HSLuv colour space.
@@ -2593,10 +2598,10 @@ module.exports.saturate_lch = function(img, level) {
 * @param {PhotonImage} img
 * @param {number} level
 */
-module.exports.saturate_hsluv = function(img, level) {
+export function saturate_hsluv(img, level) {
     _assertClass(img, PhotonImage);
     wasm.saturate_hsluv(img.__wbg_ptr, level);
-};
+}
 
 /**
 * Increase the image's saturation in the HSV colour space.
@@ -2619,10 +2624,10 @@ module.exports.saturate_hsluv = function(img, level) {
 * @param {PhotonImage} img
 * @param {number} level
 */
-module.exports.saturate_hsv = function(img, level) {
+export function saturate_hsv(img, level) {
     _assertClass(img, PhotonImage);
     wasm.saturate_hsv(img.__wbg_ptr, level);
-};
+}
 
 /**
 * Lighten an image by a specified amount in the LCh colour space.
@@ -2646,10 +2651,10 @@ module.exports.saturate_hsv = function(img, level) {
 * @param {PhotonImage} img
 * @param {number} level
 */
-module.exports.lighten_lch = function(img, level) {
+export function lighten_lch(img, level) {
     _assertClass(img, PhotonImage);
     wasm.lighten_lch(img.__wbg_ptr, level);
-};
+}
 
 /**
 * Lighten an image by a specified amount in the HSLuv colour space.
@@ -2673,10 +2678,10 @@ module.exports.lighten_lch = function(img, level) {
 * @param {PhotonImage} img
 * @param {number} level
 */
-module.exports.lighten_hsluv = function(img, level) {
+export function lighten_hsluv(img, level) {
     _assertClass(img, PhotonImage);
     wasm.lighten_hsluv(img.__wbg_ptr, level);
-};
+}
 
 /**
 * Lighten an image by a specified amount in the HSL colour space.
@@ -2699,10 +2704,10 @@ module.exports.lighten_hsluv = function(img, level) {
 * @param {PhotonImage} img
 * @param {number} level
 */
-module.exports.lighten_hsl = function(img, level) {
+export function lighten_hsl(img, level) {
     _assertClass(img, PhotonImage);
     wasm.lighten_hsl(img.__wbg_ptr, level);
-};
+}
 
 /**
 * Lighten an image by a specified amount in the HSV colour space.
@@ -2726,10 +2731,10 @@ module.exports.lighten_hsl = function(img, level) {
 * @param {PhotonImage} img
 * @param {number} level
 */
-module.exports.lighten_hsv = function(img, level) {
+export function lighten_hsv(img, level) {
     _assertClass(img, PhotonImage);
     wasm.lighten_hsv(img.__wbg_ptr, level);
-};
+}
 
 /**
 * Darken the image by a specified amount in the LCh colour space.
@@ -2753,10 +2758,10 @@ module.exports.lighten_hsv = function(img, level) {
 * @param {PhotonImage} img
 * @param {number} level
 */
-module.exports.darken_lch = function(img, level) {
+export function darken_lch(img, level) {
     _assertClass(img, PhotonImage);
     wasm.darken_lch(img.__wbg_ptr, level);
-};
+}
 
 /**
 * Darken the image by a specified amount in the HSLuv colour space.
@@ -2780,10 +2785,10 @@ module.exports.darken_lch = function(img, level) {
 * @param {PhotonImage} img
 * @param {number} level
 */
-module.exports.darken_hsluv = function(img, level) {
+export function darken_hsluv(img, level) {
     _assertClass(img, PhotonImage);
     wasm.darken_hsluv(img.__wbg_ptr, level);
-};
+}
 
 /**
 * Darken the image by a specified amount in the HSL colour space.
@@ -2807,10 +2812,10 @@ module.exports.darken_hsluv = function(img, level) {
 * @param {PhotonImage} img
 * @param {number} level
 */
-module.exports.darken_hsl = function(img, level) {
+export function darken_hsl(img, level) {
     _assertClass(img, PhotonImage);
     wasm.darken_hsl(img.__wbg_ptr, level);
-};
+}
 
 /**
 * Darken the image's colours by a specified amount in the HSV colour space.
@@ -2834,10 +2839,10 @@ module.exports.darken_hsl = function(img, level) {
 * @param {PhotonImage} img
 * @param {number} level
 */
-module.exports.darken_hsv = function(img, level) {
+export function darken_hsv(img, level) {
     _assertClass(img, PhotonImage);
     wasm.darken_hsv(img.__wbg_ptr, level);
-};
+}
 
 /**
 * Desaturate the image by a specified amount in the HSV colour space.
@@ -2861,10 +2866,10 @@ module.exports.darken_hsv = function(img, level) {
 * @param {PhotonImage} img
 * @param {number} level
 */
-module.exports.desaturate_hsv = function(img, level) {
+export function desaturate_hsv(img, level) {
     _assertClass(img, PhotonImage);
     wasm.desaturate_hsv(img.__wbg_ptr, level);
-};
+}
 
 /**
 * Desaturate the image by a specified amount in the HSL colour space.
@@ -2888,10 +2893,10 @@ module.exports.desaturate_hsv = function(img, level) {
 * @param {PhotonImage} img
 * @param {number} level
 */
-module.exports.desaturate_hsl = function(img, level) {
+export function desaturate_hsl(img, level) {
     _assertClass(img, PhotonImage);
     wasm.desaturate_hsl(img.__wbg_ptr, level);
-};
+}
 
 /**
 * Desaturate the image by a specified amount in the LCh colour space.
@@ -2915,10 +2920,10 @@ module.exports.desaturate_hsl = function(img, level) {
 * @param {PhotonImage} img
 * @param {number} level
 */
-module.exports.desaturate_lch = function(img, level) {
+export function desaturate_lch(img, level) {
     _assertClass(img, PhotonImage);
     wasm.desaturate_lch(img.__wbg_ptr, level);
-};
+}
 
 /**
 * Desaturate the image by a specified amount in the HSLuv colour space.
@@ -2942,10 +2947,10 @@ module.exports.desaturate_lch = function(img, level) {
 * @param {PhotonImage} img
 * @param {number} level
 */
-module.exports.desaturate_hsluv = function(img, level) {
+export function desaturate_hsluv(img, level) {
     _assertClass(img, PhotonImage);
     wasm.desaturate_hsluv(img.__wbg_ptr, level);
-};
+}
 
 /**
 * Mix image with a single color, supporting passing `opacity`.
@@ -2975,12 +2980,12 @@ module.exports.desaturate_hsluv = function(img, level) {
 * @param {Rgb} mix_colour
 * @param {number} opacity
 */
-module.exports.mix_with_colour = function(photon_image, mix_colour, opacity) {
+export function mix_with_colour(photon_image, mix_colour, opacity) {
     _assertClass(photon_image, PhotonImage);
     _assertClass(mix_colour, Rgb);
     var ptr0 = mix_colour.__destroy_into_raw();
     wasm.mix_with_colour(photon_image.__wbg_ptr, ptr0, opacity);
-};
+}
 
 /**
 * Noise reduction.
@@ -3001,10 +3006,10 @@ module.exports.mix_with_colour = function(photon_image, mix_colour, opacity) {
 * Adds a constant to a select R, G, or B channel's value.
 * @param {PhotonImage} photon_image
 */
-module.exports.noise_reduction = function(photon_image) {
+export function noise_reduction(photon_image) {
     _assertClass(photon_image, PhotonImage);
     wasm.noise_reduction(photon_image.__wbg_ptr);
-};
+}
 
 /**
 * Sharpen an image.
@@ -3025,10 +3030,10 @@ module.exports.noise_reduction = function(photon_image) {
 * Adds a constant to a select R, G, or B channel's value.
 * @param {PhotonImage} photon_image
 */
-module.exports.sharpen = function(photon_image) {
+export function sharpen(photon_image) {
     _assertClass(photon_image, PhotonImage);
     wasm.sharpen(photon_image.__wbg_ptr);
-};
+}
 
 /**
 * Apply edge detection to an image, to create a dark version with its edges highlighted.
@@ -3048,10 +3053,10 @@ module.exports.sharpen = function(photon_image) {
 * ```
 * @param {PhotonImage} photon_image
 */
-module.exports.edge_detection = function(photon_image) {
+export function edge_detection(photon_image) {
     _assertClass(photon_image, PhotonImage);
     wasm.edge_detection(photon_image.__wbg_ptr);
-};
+}
 
 /**
 * Apply an identity kernel convolution to an image.
@@ -3071,10 +3076,10 @@ module.exports.edge_detection = function(photon_image) {
 * ```
 * @param {PhotonImage} photon_image
 */
-module.exports.identity = function(photon_image) {
+export function identity(photon_image) {
     _assertClass(photon_image, PhotonImage);
     wasm.identity(photon_image.__wbg_ptr);
-};
+}
 
 /**
 * Apply a box blur effect.
@@ -3094,10 +3099,10 @@ module.exports.identity = function(photon_image) {
 * ```
 * @param {PhotonImage} photon_image
 */
-module.exports.box_blur = function(photon_image) {
+export function box_blur(photon_image) {
     _assertClass(photon_image, PhotonImage);
     wasm.box_blur(photon_image.__wbg_ptr);
-};
+}
 
 /**
 * Gaussian blur in linear time.
@@ -3119,10 +3124,10 @@ module.exports.box_blur = function(photon_image) {
 * @param {PhotonImage} photon_image
 * @param {number} radius
 */
-module.exports.gaussian_blur = function(photon_image, radius) {
+export function gaussian_blur(photon_image, radius) {
     _assertClass(photon_image, PhotonImage);
     wasm.gaussian_blur(photon_image.__wbg_ptr, radius);
-};
+}
 
 /**
 * Detect horizontal lines in an image, and highlight these only.
@@ -3142,10 +3147,10 @@ module.exports.gaussian_blur = function(photon_image, radius) {
 * ```
 * @param {PhotonImage} photon_image
 */
-module.exports.detect_horizontal_lines = function(photon_image) {
+export function detect_horizontal_lines(photon_image) {
     _assertClass(photon_image, PhotonImage);
     wasm.detect_horizontal_lines(photon_image.__wbg_ptr);
-};
+}
 
 /**
 * Detect vertical lines in an image, and highlight these only.
@@ -3165,10 +3170,10 @@ module.exports.detect_horizontal_lines = function(photon_image) {
 * ```
 * @param {PhotonImage} photon_image
 */
-module.exports.detect_vertical_lines = function(photon_image) {
+export function detect_vertical_lines(photon_image) {
     _assertClass(photon_image, PhotonImage);
     wasm.detect_vertical_lines(photon_image.__wbg_ptr);
-};
+}
 
 /**
 * Detect lines at a forty five degree angle in an image, and highlight these only.
@@ -3188,10 +3193,10 @@ module.exports.detect_vertical_lines = function(photon_image) {
 * ```
 * @param {PhotonImage} photon_image
 */
-module.exports.detect_45_deg_lines = function(photon_image) {
+export function detect_45_deg_lines(photon_image) {
     _assertClass(photon_image, PhotonImage);
     wasm.detect_45_deg_lines(photon_image.__wbg_ptr);
-};
+}
 
 /**
 * Detect lines at a 135 degree angle in an image, and highlight these only.
@@ -3211,10 +3216,10 @@ module.exports.detect_45_deg_lines = function(photon_image) {
 * ```
 * @param {PhotonImage} photon_image
 */
-module.exports.detect_135_deg_lines = function(photon_image) {
+export function detect_135_deg_lines(photon_image) {
     _assertClass(photon_image, PhotonImage);
     wasm.detect_135_deg_lines(photon_image.__wbg_ptr);
-};
+}
 
 /**
 * Apply a standard laplace convolution.
@@ -3234,10 +3239,10 @@ module.exports.detect_135_deg_lines = function(photon_image) {
 * ```
 * @param {PhotonImage} photon_image
 */
-module.exports.laplace = function(photon_image) {
+export function laplace(photon_image) {
     _assertClass(photon_image, PhotonImage);
     wasm.laplace(photon_image.__wbg_ptr);
-};
+}
 
 /**
 * Preset edge effect.
@@ -3257,10 +3262,10 @@ module.exports.laplace = function(photon_image) {
 * ```
 * @param {PhotonImage} photon_image
 */
-module.exports.edge_one = function(photon_image) {
+export function edge_one(photon_image) {
     _assertClass(photon_image, PhotonImage);
     wasm.edge_one(photon_image.__wbg_ptr);
-};
+}
 
 /**
 * Apply an emboss effect to an image.
@@ -3280,10 +3285,10 @@ module.exports.edge_one = function(photon_image) {
 * ```
 * @param {PhotonImage} photon_image
 */
-module.exports.emboss = function(photon_image) {
+export function emboss(photon_image) {
     _assertClass(photon_image, PhotonImage);
     wasm.emboss(photon_image.__wbg_ptr);
-};
+}
 
 /**
 * Apply a horizontal Sobel filter to an image.
@@ -3303,10 +3308,10 @@ module.exports.emboss = function(photon_image) {
 * ```
 * @param {PhotonImage} photon_image
 */
-module.exports.sobel_horizontal = function(photon_image) {
+export function sobel_horizontal(photon_image) {
     _assertClass(photon_image, PhotonImage);
     wasm.sobel_horizontal(photon_image.__wbg_ptr);
-};
+}
 
 /**
 * Apply a horizontal Prewitt convolution to an image.
@@ -3326,10 +3331,10 @@ module.exports.sobel_horizontal = function(photon_image) {
 * ```
 * @param {PhotonImage} photon_image
 */
-module.exports.prewitt_horizontal = function(photon_image) {
+export function prewitt_horizontal(photon_image) {
     _assertClass(photon_image, PhotonImage);
     wasm.prewitt_horizontal(photon_image.__wbg_ptr);
-};
+}
 
 /**
 * Apply a vertical Sobel filter to an image.
@@ -3349,10 +3354,10 @@ module.exports.prewitt_horizontal = function(photon_image) {
 * ```
 * @param {PhotonImage} photon_image
 */
-module.exports.sobel_vertical = function(photon_image) {
+export function sobel_vertical(photon_image) {
     _assertClass(photon_image, PhotonImage);
     wasm.sobel_vertical(photon_image.__wbg_ptr);
-};
+}
 
 /**
 * Apply a monochrome effect of a certain colour.
@@ -3380,10 +3385,10 @@ module.exports.sobel_vertical = function(photon_image) {
 * @param {number} g_offset
 * @param {number} b_offset
 */
-module.exports.monochrome = function(img, r_offset, g_offset, b_offset) {
+export function monochrome(img, r_offset, g_offset, b_offset) {
     _assertClass(img, PhotonImage);
     wasm.monochrome(img.__wbg_ptr, r_offset, g_offset, b_offset);
-};
+}
 
 /**
 * Convert an image to sepia.
@@ -3402,10 +3407,10 @@ module.exports.monochrome = function(img, r_offset, g_offset, b_offset) {
 * ```
 * @param {PhotonImage} img
 */
-module.exports.sepia = function(img) {
+export function sepia(img) {
     _assertClass(img, PhotonImage);
     wasm.sepia(img.__wbg_ptr);
-};
+}
 
 /**
 * Convert an image to grayscale using the conventional averaging algorithm.
@@ -3424,18 +3429,18 @@ module.exports.sepia = function(img) {
 * ```
 * @param {PhotonImage} img
 */
-module.exports.grayscale = function(img) {
+export function grayscale(img) {
     _assertClass(img, PhotonImage);
     wasm.grayscale(img.__wbg_ptr);
-};
+}
 
 /**
 * @param {PhotonImage} img
 */
-module.exports.grayscale_alpha = function(img) {
+export function grayscale_alpha(img) {
     _assertClass(img, PhotonImage);
     wasm.grayscale_alpha(img.__wbg_ptr);
-};
+}
 
 /**
 * Convert an image to grayscale with a human corrected factor, to account for human vision.
@@ -3454,10 +3459,10 @@ module.exports.grayscale_alpha = function(img) {
 * ```
 * @param {PhotonImage} img
 */
-module.exports.grayscale_human_corrected = function(img) {
+export function grayscale_human_corrected(img) {
     _assertClass(img, PhotonImage);
     wasm.grayscale_human_corrected(img.__wbg_ptr);
-};
+}
 
 /**
 * Desaturate an image by getting the min/max of each pixel's RGB values.
@@ -3476,10 +3481,10 @@ module.exports.grayscale_human_corrected = function(img) {
 * ```
 * @param {PhotonImage} img
 */
-module.exports.desaturate = function(img) {
+export function desaturate(img) {
     _assertClass(img, PhotonImage);
     wasm.desaturate(img.__wbg_ptr);
-};
+}
 
 /**
 * Uses a min. decomposition algorithm to convert an image to greyscale.
@@ -3498,10 +3503,10 @@ module.exports.desaturate = function(img) {
 * ```
 * @param {PhotonImage} img
 */
-module.exports.decompose_min = function(img) {
+export function decompose_min(img) {
     _assertClass(img, PhotonImage);
     wasm.decompose_min(img.__wbg_ptr);
-};
+}
 
 /**
 * Uses a max. decomposition algorithm to convert an image to greyscale.
@@ -3520,10 +3525,10 @@ module.exports.decompose_min = function(img) {
 * ```
 * @param {PhotonImage} img
 */
-module.exports.decompose_max = function(img) {
+export function decompose_max(img) {
     _assertClass(img, PhotonImage);
     wasm.decompose_max(img.__wbg_ptr);
-};
+}
 
 /**
 * Employ only a limited number of gray shades in an image.
@@ -3544,10 +3549,10 @@ module.exports.decompose_max = function(img) {
 * @param {PhotonImage} photon_image
 * @param {number} num_shades
 */
-module.exports.grayscale_shades = function(photon_image, num_shades) {
+export function grayscale_shades(photon_image, num_shades) {
     _assertClass(photon_image, PhotonImage);
     wasm.grayscale_shades(photon_image.__wbg_ptr, num_shades);
-};
+}
 
 /**
 * Convert an image to grayscale by setting a pixel's 3 RGB values to the Red channel's value.
@@ -3565,10 +3570,10 @@ module.exports.grayscale_shades = function(photon_image, num_shades) {
 * ```
 * @param {PhotonImage} photon_image
 */
-module.exports.r_grayscale = function(photon_image) {
+export function r_grayscale(photon_image) {
     _assertClass(photon_image, PhotonImage);
     wasm.r_grayscale(photon_image.__wbg_ptr);
-};
+}
 
 /**
 * Convert an image to grayscale by setting a pixel's 3 RGB values to the Green channel's value.
@@ -3586,10 +3591,10 @@ module.exports.r_grayscale = function(photon_image) {
 * ```
 * @param {PhotonImage} photon_image
 */
-module.exports.g_grayscale = function(photon_image) {
+export function g_grayscale(photon_image) {
     _assertClass(photon_image, PhotonImage);
     wasm.g_grayscale(photon_image.__wbg_ptr);
-};
+}
 
 /**
 * Convert an image to grayscale by setting a pixel's 3 RGB values to the Blue channel's value.
@@ -3607,10 +3612,10 @@ module.exports.g_grayscale = function(photon_image) {
 * ```
 * @param {PhotonImage} photon_image
 */
-module.exports.b_grayscale = function(photon_image) {
+export function b_grayscale(photon_image) {
     _assertClass(photon_image, PhotonImage);
     wasm.b_grayscale(photon_image.__wbg_ptr);
-};
+}
 
 /**
 * Convert an image to grayscale by setting a pixel's 3 RGB values to a chosen channel's value.
@@ -3630,10 +3635,10 @@ module.exports.b_grayscale = function(photon_image) {
 * @param {PhotonImage} photon_image
 * @param {number} channel
 */
-module.exports.single_channel_grayscale = function(photon_image, channel) {
+export function single_channel_grayscale(photon_image, channel) {
     _assertClass(photon_image, PhotonImage);
     wasm.single_channel_grayscale(photon_image.__wbg_ptr, channel);
-};
+}
 
 /**
 * Threshold an image using a standard thresholding algorithm.
@@ -3654,10 +3659,10 @@ module.exports.single_channel_grayscale = function(photon_image, channel) {
 * @param {PhotonImage} img
 * @param {number} threshold
 */
-module.exports.threshold = function(img, threshold) {
+export function threshold(img, threshold) {
     _assertClass(img, PhotonImage);
     wasm.threshold(img.__wbg_ptr, threshold);
-};
+}
 
 function passArray8ToWasm0(arg, malloc) {
     const ptr = malloc(arg.length * 1, 1) >>> 0;
@@ -3673,7 +3678,7 @@ function getArrayU8FromWasm0(ptr, len) {
 /**
 *! [temp] Check if WASM is supported.
 */
-module.exports.run = function() {
+export function run() {
     try {
         const retptr = wasm.__wbindgen_add_to_stack_pointer(-16);
         wasm.run(retptr);
@@ -3685,7 +3690,7 @@ module.exports.run = function() {
     } finally {
         wasm.__wbindgen_add_to_stack_pointer(16);
     }
-};
+}
 
 let stack_pointer = 128;
 
@@ -3700,7 +3705,7 @@ function addBorrowedObject(obj) {
 * @param {CanvasRenderingContext2D} ctx
 * @returns {ImageData}
 */
-module.exports.get_image_data = function(canvas, ctx) {
+export function get_image_data(canvas, ctx) {
     try {
         const ret = wasm.get_image_data(addBorrowedObject(canvas), addBorrowedObject(ctx));
         return takeObject(ret);
@@ -3708,7 +3713,7 @@ module.exports.get_image_data = function(canvas, ctx) {
         heap[stack_pointer++] = undefined;
         heap[stack_pointer++] = undefined;
     }
-};
+}
 
 /**
 * Place a PhotonImage onto a 2D canvas.
@@ -3716,11 +3721,11 @@ module.exports.get_image_data = function(canvas, ctx) {
 * @param {CanvasRenderingContext2D} ctx
 * @param {PhotonImage} new_image
 */
-module.exports.putImageData = function(canvas, ctx, new_image) {
+export function putImageData(canvas, ctx, new_image) {
     _assertClass(new_image, PhotonImage);
     var ptr0 = new_image.__destroy_into_raw();
     wasm.putImageData(addHeapObject(canvas), addHeapObject(ctx), ptr0);
-};
+}
 
 /**
 * Convert a HTML5 Canvas Element to a PhotonImage.
@@ -3731,17 +3736,17 @@ module.exports.putImageData = function(canvas, ctx, new_image) {
 * @param {CanvasRenderingContext2D} ctx
 * @returns {PhotonImage}
 */
-module.exports.open_image = function(canvas, ctx) {
+export function open_image(canvas, ctx) {
     const ret = wasm.open_image(addHeapObject(canvas), addHeapObject(ctx));
     return PhotonImage.__wrap(ret);
-};
+}
 
 /**
 * Convert ImageData to a raw pixel vec of u8s.
 * @param {ImageData} imgdata
 * @returns {Uint8Array}
 */
-module.exports.to_raw_pixels = function(imgdata) {
+export function to_raw_pixels(imgdata) {
     try {
         const retptr = wasm.__wbindgen_add_to_stack_pointer(-16);
         wasm.to_raw_pixels(retptr, addHeapObject(imgdata));
@@ -3753,26 +3758,26 @@ module.exports.to_raw_pixels = function(imgdata) {
     } finally {
         wasm.__wbindgen_add_to_stack_pointer(16);
     }
-};
+}
 
 /**
 * Convert a base64 string to a PhotonImage.
 * @param {string} base64
 * @returns {PhotonImage}
 */
-module.exports.base64_to_image = function(base64) {
+export function base64_to_image(base64) {
     const ptr0 = passStringToWasm0(base64, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
     const len0 = WASM_VECTOR_LEN;
     const ret = wasm.base64_to_image(ptr0, len0);
     return PhotonImage.__wrap(ret);
-};
+}
 
 /**
 * Convert a base64 string to a Vec of u8s.
 * @param {string} base64
 * @returns {Uint8Array}
 */
-module.exports.base64_to_vec = function(base64) {
+export function base64_to_vec(base64) {
     try {
         const retptr = wasm.__wbindgen_add_to_stack_pointer(-16);
         const ptr0 = passStringToWasm0(base64, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
@@ -3786,19 +3791,19 @@ module.exports.base64_to_vec = function(base64) {
     } finally {
         wasm.__wbindgen_add_to_stack_pointer(16);
     }
-};
+}
 
 /**
 * Convert a PhotonImage to JS-compatible ImageData.
 * @param {PhotonImage} photon_image
 * @returns {ImageData}
 */
-module.exports.to_image_data = function(photon_image) {
+export function to_image_data(photon_image) {
     _assertClass(photon_image, PhotonImage);
     var ptr0 = photon_image.__destroy_into_raw();
     const ret = wasm.to_image_data(ptr0);
     return takeObject(ret);
-};
+}
 
 function isLikeNone(x) {
     return x === undefined || x === null;
@@ -3827,7 +3832,7 @@ function getClampedArrayU8FromWasm0(ptr, len) {
 }
 /**
 */
-module.exports.SamplingFilter = Object.freeze({ Nearest:1,"1":"Nearest",Triangle:2,"2":"Triangle",CatmullRom:3,"3":"CatmullRom",Gaussian:4,"4":"Gaussian",Lanczos3:5,"5":"Lanczos3", });
+export const SamplingFilter = Object.freeze({ Nearest:1,"1":"Nearest",Triangle:2,"2":"Triangle",CatmullRom:3,"3":"CatmullRom",Gaussian:4,"4":"Gaussian",Lanczos3:5,"5":"Lanczos3", });
 
 const PhotonImageFinalization = (typeof FinalizationRegistry === 'undefined')
     ? { register: () => {}, unregister: () => {} }
@@ -3836,7 +3841,7 @@ const PhotonImageFinalization = (typeof FinalizationRegistry === 'undefined')
 * Provides the image's height, width, and contains the image's raw pixels.
 * For use when communicating between JS and WASM, and also natively.
 */
-class PhotonImage {
+export class PhotonImage {
 
     static __wrap(ptr) {
         ptr = ptr >>> 0;
@@ -4039,7 +4044,6 @@ class PhotonImage {
         return BigInt.asUintN(64, ret);
     }
 }
-module.exports.PhotonImage = PhotonImage;
 
 const RgbFinalization = (typeof FinalizationRegistry === 'undefined')
     ? { register: () => {}, unregister: () => {} }
@@ -4047,7 +4051,7 @@ const RgbFinalization = (typeof FinalizationRegistry === 'undefined')
 /**
 * RGB color type.
 */
-class Rgb {
+export class Rgb {
 
     __destroy_into_raw() {
         const ptr = this.__wbg_ptr;
@@ -4117,7 +4121,6 @@ class Rgb {
         return ret;
     }
 }
-module.exports.Rgb = Rgb;
 
 const RgbaFinalization = (typeof FinalizationRegistry === 'undefined')
     ? { register: () => {}, unregister: () => {} }
@@ -4125,7 +4128,7 @@ const RgbaFinalization = (typeof FinalizationRegistry === 'undefined')
 /**
 * RGBA color type.
 */
-class Rgba {
+export class Rgba {
 
     __destroy_into_raw() {
         const ptr = this.__wbg_ptr;
@@ -4211,18 +4214,17 @@ class Rgba {
         return ret;
     }
 }
-module.exports.Rgba = Rgba;
 
-module.exports.__wbindgen_object_drop_ref = function(arg0) {
+export function __wbindgen_object_drop_ref(arg0) {
     takeObject(arg0);
 };
 
-module.exports.__wbg_new_abda76e883ba8a5f = function() {
+export function __wbg_new_abda76e883ba8a5f() {
     const ret = new Error();
     return addHeapObject(ret);
 };
 
-module.exports.__wbg_stack_658279fe44541cf6 = function(arg0, arg1) {
+export function __wbg_stack_658279fe44541cf6(arg0, arg1) {
     const ret = getObject(arg1).stack;
     const ptr1 = passStringToWasm0(ret, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
     const len1 = WASM_VECTOR_LEN;
@@ -4230,7 +4232,7 @@ module.exports.__wbg_stack_658279fe44541cf6 = function(arg0, arg1) {
     getInt32Memory0()[arg0 / 4 + 0] = ptr1;
 };
 
-module.exports.__wbg_error_f851667af71bcfc6 = function(arg0, arg1) {
+export function __wbg_error_f851667af71bcfc6(arg0, arg1) {
     let deferred0_0;
     let deferred0_1;
     try {
@@ -4242,7 +4244,7 @@ module.exports.__wbg_error_f851667af71bcfc6 = function(arg0, arg1) {
     }
 };
 
-module.exports.__wbg_instanceof_Window_f401953a2cf86220 = function(arg0) {
+export function __wbg_instanceof_Window_f401953a2cf86220(arg0) {
     let result;
     try {
         result = getObject(arg0) instanceof Window;
@@ -4253,22 +4255,22 @@ module.exports.__wbg_instanceof_Window_f401953a2cf86220 = function(arg0) {
     return ret;
 };
 
-module.exports.__wbg_document_5100775d18896c16 = function(arg0) {
+export function __wbg_document_5100775d18896c16(arg0) {
     const ret = getObject(arg0).document;
     return isLikeNone(ret) ? 0 : addHeapObject(ret);
 };
 
-module.exports.__wbg_body_edb1908d3ceff3a1 = function(arg0) {
+export function __wbg_body_edb1908d3ceff3a1(arg0) {
     const ret = getObject(arg0).body;
     return isLikeNone(ret) ? 0 : addHeapObject(ret);
 };
 
-module.exports.__wbg_createElement_8bae7856a4bb7411 = function() { return handleError(function (arg0, arg1, arg2) {
+export function __wbg_createElement_8bae7856a4bb7411() { return handleError(function (arg0, arg1, arg2) {
     const ret = getObject(arg0).createElement(getStringFromWasm0(arg1, arg2));
     return addHeapObject(ret);
 }, arguments) };
 
-module.exports.__wbg_instanceof_CanvasRenderingContext2d_20bf99ccc051643b = function(arg0) {
+export function __wbg_instanceof_CanvasRenderingContext2d_20bf99ccc051643b(arg0) {
     let result;
     try {
         result = getObject(arg0) instanceof CanvasRenderingContext2D;
@@ -4279,34 +4281,34 @@ module.exports.__wbg_instanceof_CanvasRenderingContext2d_20bf99ccc051643b = func
     return ret;
 };
 
-module.exports.__wbg_drawImage_54a07ae582270f7c = function() { return handleError(function (arg0, arg1, arg2, arg3) {
+export function __wbg_drawImage_54a07ae582270f7c() { return handleError(function (arg0, arg1, arg2, arg3) {
     getObject(arg0).drawImage(getObject(arg1), arg2, arg3);
 }, arguments) };
 
-module.exports.__wbg_drawImage_5a754349d9fbf4a6 = function() { return handleError(function (arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9) {
+export function __wbg_drawImage_5a754349d9fbf4a6() { return handleError(function (arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9) {
     getObject(arg0).drawImage(getObject(arg1), arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9);
 }, arguments) };
 
-module.exports.__wbg_getImageData_740186e596b34364 = function() { return handleError(function (arg0, arg1, arg2, arg3, arg4) {
+export function __wbg_getImageData_740186e596b34364() { return handleError(function (arg0, arg1, arg2, arg3, arg4) {
     const ret = getObject(arg0).getImageData(arg1, arg2, arg3, arg4);
     return addHeapObject(ret);
 }, arguments) };
 
-module.exports.__wbg_putImageData_044c08ad889366e1 = function() { return handleError(function (arg0, arg1, arg2, arg3) {
+export function __wbg_putImageData_044c08ad889366e1() { return handleError(function (arg0, arg1, arg2, arg3) {
     getObject(arg0).putImageData(getObject(arg1), arg2, arg3);
 }, arguments) };
 
-module.exports.__wbg_width_ddb5e7bb9fbdd107 = function(arg0) {
+export function __wbg_width_ddb5e7bb9fbdd107(arg0) {
     const ret = getObject(arg0).width;
     return ret;
 };
 
-module.exports.__wbg_height_2c4b892494a113f4 = function(arg0) {
+export function __wbg_height_2c4b892494a113f4(arg0) {
     const ret = getObject(arg0).height;
     return ret;
 };
 
-module.exports.__wbg_data_c02d3aac6da15e9f = function(arg0, arg1) {
+export function __wbg_data_c02d3aac6da15e9f(arg0, arg1) {
     const ret = getObject(arg1).data;
     const ptr1 = passArray8ToWasm0(ret, wasm.__wbindgen_malloc);
     const len1 = WASM_VECTOR_LEN;
@@ -4314,12 +4316,12 @@ module.exports.__wbg_data_c02d3aac6da15e9f = function(arg0, arg1) {
     getInt32Memory0()[arg0 / 4 + 0] = ptr1;
 };
 
-module.exports.__wbg_newwithu8clampedarrayandsh_7f7f549e397591e0 = function() { return handleError(function (arg0, arg1, arg2, arg3) {
+export function __wbg_newwithu8clampedarrayandsh_7f7f549e397591e0() { return handleError(function (arg0, arg1, arg2, arg3) {
     const ret = new ImageData(getClampedArrayU8FromWasm0(arg0, arg1), arg2 >>> 0, arg3 >>> 0);
     return addHeapObject(ret);
 }, arguments) };
 
-module.exports.__wbg_instanceof_HtmlCanvasElement_46bdbf323b0b18d1 = function(arg0) {
+export function __wbg_instanceof_HtmlCanvasElement_46bdbf323b0b18d1(arg0) {
     let result;
     try {
         result = getObject(arg0) instanceof HTMLCanvasElement;
@@ -4330,108 +4332,108 @@ module.exports.__wbg_instanceof_HtmlCanvasElement_46bdbf323b0b18d1 = function(ar
     return ret;
 };
 
-module.exports.__wbg_width_aee8b8809b033b05 = function(arg0) {
+export function __wbg_width_aee8b8809b033b05(arg0) {
     const ret = getObject(arg0).width;
     return ret;
 };
 
-module.exports.__wbg_setwidth_080107476e633963 = function(arg0, arg1) {
+export function __wbg_setwidth_080107476e633963(arg0, arg1) {
     getObject(arg0).width = arg1 >>> 0;
 };
 
-module.exports.__wbg_height_80053d3c71b338e0 = function(arg0) {
+export function __wbg_height_80053d3c71b338e0(arg0) {
     const ret = getObject(arg0).height;
     return ret;
 };
 
-module.exports.__wbg_setheight_dc240617639f1f51 = function(arg0, arg1) {
+export function __wbg_setheight_dc240617639f1f51(arg0, arg1) {
     getObject(arg0).height = arg1 >>> 0;
 };
 
-module.exports.__wbg_getContext_df50fa48a8876636 = function() { return handleError(function (arg0, arg1, arg2) {
+export function __wbg_getContext_df50fa48a8876636() { return handleError(function (arg0, arg1, arg2) {
     const ret = getObject(arg0).getContext(getStringFromWasm0(arg1, arg2));
     return isLikeNone(ret) ? 0 : addHeapObject(ret);
 }, arguments) };
 
-module.exports.__wbg_width_59e0563d9c871704 = function(arg0) {
+export function __wbg_width_59e0563d9c871704(arg0) {
     const ret = getObject(arg0).width;
     return ret;
 };
 
-module.exports.__wbg_height_1a892edafac94d49 = function(arg0) {
+export function __wbg_height_1a892edafac94d49(arg0) {
     const ret = getObject(arg0).height;
     return ret;
 };
 
-module.exports.__wbg_settextContent_d271bab459cbb1ba = function(arg0, arg1, arg2) {
+export function __wbg_settextContent_d271bab459cbb1ba(arg0, arg1, arg2) {
     getObject(arg0).textContent = arg1 === 0 ? undefined : getStringFromWasm0(arg1, arg2);
 };
 
-module.exports.__wbg_appendChild_580ccb11a660db68 = function() { return handleError(function (arg0, arg1) {
+export function __wbg_appendChild_580ccb11a660db68() { return handleError(function (arg0, arg1) {
     const ret = getObject(arg0).appendChild(getObject(arg1));
     return addHeapObject(ret);
 }, arguments) };
 
-module.exports.__wbg_newnoargs_e258087cd0daa0ea = function(arg0, arg1) {
+export function __wbg_newnoargs_e258087cd0daa0ea(arg0, arg1) {
     const ret = new Function(getStringFromWasm0(arg0, arg1));
     return addHeapObject(ret);
 };
 
-module.exports.__wbg_call_27c0f87801dedf93 = function() { return handleError(function (arg0, arg1) {
+export function __wbg_call_27c0f87801dedf93() { return handleError(function (arg0, arg1) {
     const ret = getObject(arg0).call(getObject(arg1));
     return addHeapObject(ret);
 }, arguments) };
 
-module.exports.__wbindgen_object_clone_ref = function(arg0) {
+export function __wbindgen_object_clone_ref(arg0) {
     const ret = getObject(arg0);
     return addHeapObject(ret);
 };
 
-module.exports.__wbg_self_ce0dbfc45cf2f5be = function() { return handleError(function () {
+export function __wbg_self_ce0dbfc45cf2f5be() { return handleError(function () {
     const ret = self.self;
     return addHeapObject(ret);
 }, arguments) };
 
-module.exports.__wbg_window_c6fb939a7f436783 = function() { return handleError(function () {
+export function __wbg_window_c6fb939a7f436783() { return handleError(function () {
     const ret = window.window;
     return addHeapObject(ret);
 }, arguments) };
 
-module.exports.__wbg_globalThis_d1e6af4856ba331b = function() { return handleError(function () {
+export function __wbg_globalThis_d1e6af4856ba331b() { return handleError(function () {
     const ret = globalThis.globalThis;
     return addHeapObject(ret);
 }, arguments) };
 
-module.exports.__wbg_global_207b558942527489 = function() { return handleError(function () {
+export function __wbg_global_207b558942527489() { return handleError(function () {
     const ret = global.global;
     return addHeapObject(ret);
 }, arguments) };
 
-module.exports.__wbindgen_is_undefined = function(arg0) {
+export function __wbindgen_is_undefined(arg0) {
     const ret = getObject(arg0) === undefined;
     return ret;
 };
 
-module.exports.__wbg_buffer_12d079cc21e14bdb = function(arg0) {
+export function __wbg_buffer_12d079cc21e14bdb(arg0) {
     const ret = getObject(arg0).buffer;
     return addHeapObject(ret);
 };
 
-module.exports.__wbg_new_63b92bc8671ed464 = function(arg0) {
+export function __wbg_new_63b92bc8671ed464(arg0) {
     const ret = new Uint8Array(getObject(arg0));
     return addHeapObject(ret);
 };
 
-module.exports.__wbg_set_a47bac70306a19a7 = function(arg0, arg1, arg2) {
+export function __wbg_set_a47bac70306a19a7(arg0, arg1, arg2) {
     getObject(arg0).set(getObject(arg1), arg2 >>> 0);
 };
 
-module.exports.__wbg_length_c20a40f15020d68a = function(arg0) {
+export function __wbg_length_c20a40f15020d68a(arg0) {
     const ret = getObject(arg0).length;
     return ret;
 };
 
-module.exports.__wbindgen_debug_string = function(arg0, arg1) {
+export function __wbindgen_debug_string(arg0, arg1) {
     const ret = debugString(getObject(arg1));
     const ptr1 = passStringToWasm0(ret, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
     const len1 = WASM_VECTOR_LEN;
@@ -4439,20 +4441,12 @@ module.exports.__wbindgen_debug_string = function(arg0, arg1) {
     getInt32Memory0()[arg0 / 4 + 0] = ptr1;
 };
 
-module.exports.__wbindgen_throw = function(arg0, arg1) {
+export function __wbindgen_throw(arg0, arg1) {
     throw new Error(getStringFromWasm0(arg0, arg1));
 };
 
-module.exports.__wbindgen_memory = function() {
+export function __wbindgen_memory() {
     const ret = wasm.memory;
     return addHeapObject(ret);
 };
-
-const path = require('path').join(__dirname, 'photon-node_bg.wasm');
-const bytes = require('fs').readFileSync(path);
-
-const wasmModule = new WebAssembly.Module(bytes);
-const wasmInstance = new WebAssembly.Instance(wasmModule, imports);
-wasm = wasmInstance.exports;
-module.exports.__wasm = wasm;
 
